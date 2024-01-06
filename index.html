@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./css/all.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        /* bleu : #1A4E75   ;  green : #0A8690 *
+        skin color : rgb(255,224,183)   brown : rgb(104,80,81)  grey   rgb(238,231,223)
+        */
+
+        header {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: agbalumo;
+            text-transform: capitalize;
+            background-color: white;
+        }
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 60%;
+
+        }
+
+        header nav a {
+            font-size: 20px;
+            color: #1c5f65;
+
+            background: -webkit-linear-gradient(bottom, rgba(255, 224, 183, 255), rgba(104, 80, 81, 255));
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding: 5px 10px;
+        }
+
+
+        header nav a::before {
+            /* horizantale border */
+            width: 0%;
+            height: 95%;
+
+            content: "";
+            background-color: transparent;
+            border-top: 2px solid rgb(104, 80, 81);
+            border-bottom: 2px solid rgb(104, 80, 81);
+            ;
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            transition: 0.3s;
+
+        }
+
+
+        header nav a:hover::before {
+            width: 102%;
+            visibility: visible;
+            transition-delay: 0.3s;
+
+        }
+
+        header nav a::after {
+            /* vertical border */
+            width: 100%;
+            height: 0;
+            top: 0;
+            left: 0;
+            margin: 23px 0;
+            content: "";
+            border-right: 2px solid rgb(104, 80, 81);
+            border-left: 2px solid rgb(104, 80, 81);
+            position: absolute;
+            visibility: visible;
+            transition: 0.3s;
+        }
+
+        header nav a:hover::after {
+            visibility: visible;
+            margin: 0 0;
+            height: 103%;
+        }
+
+
+        header nav .head-nav .tab {
+            background-clip: initial;
+            -webkit-text-fill-color: initial;
+            position: absolute;
+            width: 450px;
+            height: 100px;
+            color: rgb(187, 136, 137);
+            font-family: initial;
+            background-color: rgb(255, 255, 255);
+            z-index: 55;
+            border: 2px solid #826565;
+            top: 50px;
+            left: 0;
+            transform: scale(0.2);
+            visibility: hidden;
+            padding: 10px;
+
+        }
+
+        header nav .head-nav .tab span {
+            padding-bottom: 5px;
+            border-bottom: 1px dotted #826565;
+
+        }
+
+        header nav .head-nav:hover .tab {
+            visibility: visible;
+            transform: scale(1);
+            transition: 0.5s;
+
+        }
+
+        header nav .head-nav:hover .tab th {
+            text-align: left;
+            padding-bottom: 15px;
+        }
+
+        header nav .head-nav:hover .tab td {
+
+            padding-bottom: 5px;
+        }
+
+        header .icons li {
+            display: inline;
+        }
+
+        header .icons {
+            text-align: center;
+            word-spacing: 10px;
+            background: -webkit-linear-gradient(bottom, rgba(255, 224, 183, 255), rgba(104, 80, 81, 255));
+
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header .icons .exepct {
+            word-spacing: 1.5px;
+        }
+
+        header .icons .icon {
+            font-size: 28px;
+            color: rgba(255, 224, 183, 255);
+            background: -webkit-linear-gradient(bottom, rgb(129, 100, 101), rgb(255, 224, 183));
+
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header .icons .after {
+            position: relative;
+        }
+
+        header .icons .after .note {
+            position: absolute;
+            width: 15px;
+            height: 20px;
+            bottom: 0;
+            right: 0;
+            background-color: rgb(104, 80, 81);
+            border-radius: 50%;
+
+
+        }
+
+        header .icons .after .note img {
+            margin: 4px auto;
+        }
+
+        main {
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        main .container {
+            width: 80%;
+            height: 80%;
+            background-image: url("images/wallsnow.jpg");
+            margin: auto;
+            border-radius: 20px;
+
+
+            position: relative;
+        }
+
+        main .container .overlay {
+            position: absolute;
+            background-color: rgba(104, 80, 81, 0.9);
+            width: 100%;
+            border-radius: 20px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 22;
+        }
+
+        main .container .left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 45%;
+            align-items: flex-start;
+            margin-left: 100px;
+
+        }
+
+        main .container .left h1 {
+            font-size: 70px;
+            color: white;
+            text-transform: capitalize;
+            margin-bottom: 50px;
+        }
+
+        main .container .left button {
+            padding: 5px 15px;
+            border-color: transparent;
+            background-color: white;
+
+        }
+
+        .headimg {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        /*--------------------------------------------------- section 2 ----------------------------------------------------*/
+        .section2 {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            perspective: 150px;
+        }
+
+        .general {
+            display: inline;
+            position: relative;
+            font-size: 30px;
+        }
+
+        .general::after {
+            width: 60px;
+            height: 2px;
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 35%;
+            background-color: black;
+            transition: 1s;
+
+        }
+
+        .general:hover::after {
+            transform: scaleX(2);
+        }
+
+        .section2 .items {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .section2-item {
+
+            text-align: left;
+
+        }
+
+        .section2-item img {
+            background-color: #3db6bf96;
+            margin-bottom: 10px;
+            width: 290px;
+        }
+
+        .section2-item p {
+            font-size: 20px;
+            color: rgb(159, 155, 155);
+        }
+
+        .section2-item .section2-list {
+            display: flex;
+            list-style-type: none;
+            justify-content: space-between;
+            font-size: 15px;
+            align-items: baseline;
+            font-size: 22px;
+        }
+
+        .section2-item .section2-list i {
+            font-size: 30px;
+            opacity: 0;
+            color: rgb(104, 80, 81);
+        }
+
+        .section2-item .section2-list i:hover {
+            opacity: 1;
+        }
+
+        /******************************************  section2 part tow ******************************************************/
+        .pub {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 320px;
+            text-align: left;
+            margin-bottom: 50px;
+
+        }
+
+        .pub article {
+            background-color: rgb(238, 231, 223);
+            width: 50%;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+
+        }
+
+        .pub article .title {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .pub article h3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            font-size: 30px;
+            margin-top: 5px;
+
+        }
+
+        .pub article h3 span {
+            font-size: 14px;
+        }
+
+        .pub article i {
+            font-size: 50px;
+            margin-right: 5px;
+            color: rgb(78, 60, 60);
+        }
+
+        .pub article p {
+            font-size: 18px;
+            line-height: 32px;
+            width: 99%;
+        }
+
+        .pub article .lines {
+            position: absolute;
+
+            width: 20px;
+            height: 0px;
+            margin-bottom: 20px;
+            margin-right: 20px;
+            background-color: transparent;
+            border: 2px dashed transparent;
+            border-bottom: 2px dashed rgb(71, 56, 56);
+            transform: scaleX(10);
+            bottom: 10px;
+            right: 17%;
+
+        }
+
+        .pub .discount {
+            list-style-type: none;
+            padding: 0;
+            width: 22.5%;
+            padding: 15px 10px;
+            box-sizing: border-box;
+            background-size: cover;
+            font-size: 20px;
+            line-height: 25px;
+            transition: 0.4s;
+        }
+
+        .pub .discount:hover {
+            transform: scale(1.140);
+        }
+
+        .pub .dis1 {
+            background-image: url("images/back2.jpg");
+            background-position: 10% 54%;
+
+        }
+
+        .pub .dis2 {
+            background-image: url("images/backg2.jpg");
+            background-position: 60% 0%;
+
+        }
+
+        .pub .discount .first {
+            color: rgb(123, 28, 29);
+        }
+
+        .pub .discount .second {
+            font-weight: bold;
+        }
+
+        /******************************************  section2 part 3 ******************************************************/
+        .offers {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .offer-item {
+            text-align: center;
+            list-style-type: none;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .offers .b {
+            border-right: 1px solid rgb(98, 62, 62);
+        }
+
+        .offer-item .img {
+            height: 50px;
+            width: 42px;
+            background-image: url("images/WhatsApp\ Image\ 2024-01-03\ at\ 2.20.06\ PM.jpeg");
+            background-repeat: repeat-x no-repeat;
+            transition: 0.3s;
+        }
+
+        .offer-item .img:hover {
+            background-position: 0% 11.2%;
+
+        }
+
+        .offer-item .o2 {
+            background-position: 0% 22.5%;
+        }
+
+        .offer-item .o2:hover {
+            background-position: 0% 33.56%;
+        }
+
+        .offer-item .o3 {
+            background-position: 0% 45%;
+        }
+
+        .offer-item .o3:hover {
+            background-position: 0% 56%;
+        }
+
+        .offer-item .o4 {
+            background-position: 0% 67.5%;
+        }
+
+        .offer-item .o4:hover {
+            background-position: 0% 78.59%;
+        }
+
+        .offer-item .o5 {
+            height: 40px;
+            background-position: 0% 89%;
+
+        }
+
+        .offer-item .o5:hover {
+            background-position: 0% 100%;
+        }
+
+        .offers .b5 .title1 {
+            margin-top: 10px;
+        }
+
+        .offers .title1 {
+            color: rgb(97, 59, 59);
+            font-weight: bold;
+        }
+
+        .offers .title2 {
+            color: rgba(156, 92, 92, 0.688);
+        }
+
+        .section2 hr {
+            width: 100%;
+            margin: 30px 0 60px;
+        }
+
+        /******************************************  section2 last part ******************************************************/
+
+        .head {
+            margin-top: 20px;
+            display: flex;
+            list-style-type: none;
+            justify-content: space-evenly;
+            width: 50%;
+            margin: 30px auto;
+        }
+
+        .part3-items {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            row-gap: 30px;
+            column-gap: 30px;
+            transform-style: preserve-3d;
+            margin-bottom: 100px;
+        }
+
+
+        .part3-item .img {
+
+            background-image: url("images/7161d4da14891e9d1dd1c2bc62f4d0b2-removebg-preview.png");
+            background-color: rgb(209, 184, 152);
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: 0% 70%;
+            position: relative;
+            padding: 30px 0;
+        }
+
+        .part3-item .img2 {
+            background-image: url("images/monto2-removebg-preview.png");
+
+            background-color: rgb(209, 184, 152);
+
+            background-position: 0% 20%;
+
+        }
+
+        .part3-item .img3 {
+            background-image: url("images/gress4-removebg-preview.png");
+            background-color: rgb(209, 184, 152);
+            background-position: 0% 60%;
+
+        }
+
+        .part3-item .img4 {
+            background-image: url("images/dressHead-removebg-preview.png");
+            background-color: rgb(209, 184, 152);
+            background-position: 0% 10%;
+
+        }
+
+        .part3-item .img5 {
+            background-image: url("images/dress3-removebg-preview\ \(1\).png");
+            background-color: rgb(209, 184, 152);
+            background-position: 0% 65%;
+
+        }
+
+        .part3-item .img::after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url("images/Untitled_design__1_-removebg-preview.png");
+            background-size: cover;
+            background-position: 0% 50%;
+            transform: rotateY(180deg);
+            opacity: 0.9;
+            backface-visibility: hidden;
+            top: 0;
+            left: 0;
+            transition: 0.5s;
+        }
+
+        .part3-item:hover .img::after {
+            transform: rotateY(360deg);
+            opacity: 0.8;
+
+        }
+
+        .part3-item ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+
+        }
+
+        .part3-item ul li {
+            padding-right: 5px;
+            color: rgb(255, 255, 0);
+        }
+
+        .part3-item span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+
+            <img class="logo" src="./images/e86922f15bfd4d108af98e1ecd77c06e-removebg-preview.png" width="100"
+                height="100px">
+
+            <nav>
+                <a href="#" class="head-nav">furniture
+
+                    <table class="tab">
+                        <tr>
+                            <th> <span>table1</span></th>
+                            <th><span>table2</span></th>
+                            <th><span>table3</span></th>
+                        </tr>
+                        <tr>
+                            <td>study table</td>
+                            <td>study table</td>
+                            <td>study table</td>
+                        </tr>
+                        <tr>
+                            <td>study table</td>
+                            <td>study table</td>
+                            <td>study table</td>
+                        </tr>
+                        <tr>
+                            <td>study table</td>
+                            <td>study table</td>
+                            <td>study table</td>
+                        </tr>
+                        <tr>
+                            <td>study table</td>
+                            <td>study table</td>
+                            <td>study table</td>
+                        </tr>
+                    </table>
+                </a>
+                <a href="#">armoire</a>
+                <a href="#">study table</a>
+                <a href="#">plastic chair</a>
+                <a href="#">war drobes</a>
+                <a href="#">more</a>
+            </nav>
+            <ul class="icons">
+                <li><i class="fas fa-search icon"></i></li>
+                <li><i class="fas fa-user icon"></i></li>
+                <li class="after"><i class="fas fa-cart-plus icon"></i>
+                    <div class="note"><img src="./images/zero (1).png" width="7" height="10"></div>
+                </li>
+                <li class="exepct">Your bag</li>
+            </ul>
+        </header>
+
+        <div class="container">
+            <div class="overlay">
+                <div class="left">
+                    <h1>winter outfits collection</h1>
+                    <button>shop now</button>
+                </div>
+                <div class="headimg">
+                    <img src="./images/headimg.png" width="400px" height="500px">
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- ------------------------------------------------ section 2 ------------------------------------------------ -->
+
+    <div class="section2">
+        <h2 class="general">spetial category</h2>
+
+        <div class="items">
+
+            <div class="section2-item">
+                <img src="./images/862d9d07351386d9a47055aa2d3b5412.jpg" width="200" height="350">
+                <p>Most popular</p>
+                <ul class="section2-list">
+                    <li>Modern Victorian dress</li>
+                    <li> <i class="fas fa-caret-square-right"></i></li>
+                </ul>
+
+            </div>
+            <div class="section2-item">
+                <img src="./images/1467e949d7dbbcecbd64605b769b23ef.jpg" width="200" height="350">
+                <p>Most popular</p>
+                <ul class="section2-list">
+                    <li>Modern Victorian dress</li>
+                    <li> <i class="fas fa-caret-square-right"></i></li>
+                </ul>
+            </div>
+            <div class="section2-item  ">
+                <img src="./images/dress.jpg" width="200" height="350">
+                <p>Most popular</p>
+                <ul class="section2-list">
+                    <li>Modern Victorian dress</li>
+                    <li> <i class="fas fa-caret-square-right"></i></li>
+                </ul>
+            </div>
+            <div class="section2-item">
+                <img src="./images/monto.jpg" width="200" height="350">
+                <p>Most popular</p>
+                <ul class="section2-list">
+                    <li>Modern Victorian dress</li>
+                    <li> <i class="fas fa-caret-square-right"></i></li>
+                </ul>
+            </div>
+        </div> <!-- items -->
+
+        <div class="pub">
+            <article>
+                <div class="title">
+                    <i class="fas fa-quote-left"></i>
+                    <h3>Exellent wool<br><span>(markting)</span></h3>
+                </div>
+                <p>This is paragraph in template 2 showing a website using some html css and its new versions like
+                    html5 css3 This is paragraph in template 2 showing a website using some html css and its new
+                    versions like html5
+                    css3 This is paragraph in template 2 showing a website using some html css and its new versions like
+                    html5 css3</p>
+                <div class="lines"> </div>
+                <!-- box borderrs transparent exect the bottom ,style border dashed sclae(2) -->
+            </article>
+            <ul class="discount dis2">
+                <li class="first">Discount 20% </li>
+                <li class="second">Designing Interior</li>
+            </ul>
+            <ul class="discount dis1">
+                <li class="first">Discount 20% </li>
+                <li class="second">Designing Interior</li>
+            </ul>
+        </div> <!--  section2 part2 -->
+
+
+        <div class="offers">
+            <ul class="offer-item b">
+                <li class="img"></li>
+                <li class="title1">Free Delivery</li>
+                <li class="title2">Free Shipping On All Order</li>
+            </ul>
+            <ul class="offer-item b ">
+                <li class="img o2"></li>
+                <li class="title1">Free Delivery</li>
+                <li class="title2">Free Shipping On All Order</li>
+            </ul>
+            <ul class="offer-item b ">
+                <li class="img o3"></li>
+                <li class="title1">Free Delivery</li>
+                <li class="title2">Free Shipping On All Order</li>
+            </ul>
+            <ul class="offer-item b ">
+                <li class="img o4"></li>
+                <li class="title1">Free Delivery</li>
+                <li class="title2">Free Shipping On All Order</li>
+            </ul>
+            <ul class="offer-item b5">
+                <li class="img o5"></li>
+                <li class="title1">Free Delivery</li>
+                <li class="title2">Free Shipping On All Order</li>
+            </ul>
+        </div> <!-- section2 part 3 -->
+        <hr>
+
+
+        <h2 class="general">Featured Products</h2>
+        <ul class="head">
+            <li>Wooden Chair</li>
+            <li>Plastic Chair</li>
+            <li>Study Table</li>
+            <li>Armoires</li>
+        </ul>
+        <div class="part3-items">
+            <div class="section2-item part3-item">
+                <div class="img img1"></div>
+                <ul class="stars">
+                    <li> <i class="fas fa-star"></i> <span></span></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star-half-alt"></i></li>
+                </ul>
+                <p>Product Item</p>
+                <span>108$</span>
+            </div> <!--  part3 -item -->
+            <div class="section2-item part3-item">
+                <div class="img img2"></div>
+                <ul class="stars">
+                    <li> <i class="fas fa-star"></i> <span></span></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star-half-alt"></i></li>
+                </ul>
+                <p>Product Item</p>
+                <span>108$</span>
+            </div> <!--  part3 -item -->
+
+            <div class="section2-item part3-item">
+                <div class="img img3"></div>
+                <ul class="stars">
+                    <li> <i class="fas fa-star"></i> <span></span></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star-half-alt"></i></li>
+                </ul>
+                <p>Product Item</p>
+                <span>108$</span>
+            </div> <!--  part3 -item -->
+
+            <div class="section2-item part3-item">
+                <div class="img img3"></div>
+                <ul class="stars">
+                    <li> <i class="fas fa-star"></i> <span></span></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star-half-alt"></i></li>
+                </ul>
+                <p>Product Item</p>
+                <span>108$</span>
+            </div> <!--  part3 -item -->
+
+            <div class="section2-item part3-item">
+                <div class="img img4"></div>
+                <ul class="stars">
+                    <li> <i class="fas fa-star"></i> <span></span></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star-half-alt"></i></li>
+                </ul>
+                <p>Product Item</p>
+                <span>108$</span>
+            </div> <!--  part3 -item -->
+
+            <div class="section2-item part3-item">
+                <div class="img img5"></div>
+                <ul class="stars">
+                    <li> <i class="fas fa-star"></i> <span></span></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star"></i></li>
+                    <li> <i class="fas fa-star-half-alt"></i></li>
+                </ul>
+                <p>Product Item</p>
+                <span>108$</span>
+            </div> <!--  part3 -item -->
+        </div> <!--  section2 part3 -->
+
+    </div><!-- section2 -->
+
+
+</body>
+
+</html>
